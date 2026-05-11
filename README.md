@@ -1,3 +1,9 @@
+# Reddit Clone
+
+This is based on Codecademy's Reddit Clone project, to create a basic clone of Reddit. It should display posts, comments, be able to search for them, with the integration of the Reddit API.
+
+Below is left for my personal review
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

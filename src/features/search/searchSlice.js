@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import fetchSearchResults from '../../reddit';
 
 export const fetchSearchThunk = createAsyncThunk('search/fetchSearchResults', async({ searchTerm }) => {
     const results = await fetchSearchResults(searchTerm); // function will be created to fetch search results based on search terms
@@ -34,3 +35,8 @@ const searchSlice = createSlice({
          })
     }
 });
+
+export const selectSearchTerm = (state) => state.searchTerm;
+export const selectResults = (state) => state.results;
+
+export default searchSlice.reducer;

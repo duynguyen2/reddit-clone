@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import fetchPost from '../../reddit';
 
 export const fetchPostThunk = createAsyncThunk('post/fetchPost', async(postPath, thunkAPI) => {
     const { post, comments } = await fetchPost(postPath); // function will created to fetch post
@@ -43,4 +44,4 @@ export const selectError = (state) => state.post.error;
 
 export const { showPost } = postSlice.actions;
 
-export default postSlice.reducers;
+export default postSlice.reducer;
