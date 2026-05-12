@@ -11,26 +11,30 @@ const searchSlice = createSlice({
     initialState: {
         searchTerm: "",
         results: [],
-        status: "idle",
+        isLoading: false,
         error: null,
     },
-    reducers: {
+    reducers: { // decide if we should store and use locally saved searches
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload.searchTerm;
         },
+        getSearchResults: (state, action) => {
+            state.results = action.payload.results;
+            return state.results;
+        }
     },
     extraReducers: (builder) => {
         builder
          .addCase(fetchSearchThunk.pending, (state) => {
-            state.status = "loading";
+            state.isLoading = true;
             state.error = null;
          })
          .addCase(fetchSearchThunk.fulfilled, (state, action) => {
-            state.status = "succeeded";
+            state.isLoading = false;
             
          })
          .addCase(fetchSearchThunk.rejected, (state, action) => {
-            state.status = "failed";
+            state.isLoading = false;
             state.error = action.error.message;
          })
     }
@@ -38,5 +42,5 @@ const searchSlice = createSlice({
 
 export const selectSearchTerm = (state) => state.searchTerm;
 export const selectResults = (state) => state.results;
-
+export const { setSearchTerm, getSearchResults } = searchSlice.actions;
 export default searchSlice.reducer;

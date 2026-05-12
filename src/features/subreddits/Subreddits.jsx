@@ -1,14 +1,13 @@
 import React from 'react';
-import selectPosts from '../features/post/postSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectSubreddits } from './subredditsSlice';
 
-export const Posts = () => {
+export const Subreddits = () => {
     const dispatch = useDispatch();
-    const posts = useSelector(selectPosts);
+    const subreddits = useSelector(selectSubreddits);
 
-    return(
+    return (
         <div>
-            
         </div>
     );
 }

@@ -10,38 +10,41 @@ const postSlice = createSlice({
     initialState: {
         post: null,
         comments: [],
-        status: "idle",
+        isLoading: false,
         error: null,
     },
     reducers: {
         showPost: (state, action) => {
             state.post = action.payload;
+        },
+        setPosts: () => {},
+        getComments: (state, action) => {
+            state.comments = action.payload.comments; // tbd if necessary here or to be put elsewhere
+            return state.comments;
         }
     },
     extraReducers: (builder) => {
         builder
          .addCase(fetchPostThunk.pending, (state) => {
             state.error = null;
-            state.status = "loading";
+            state.isLoading = true;
          })
          .addCase(fetchPostThunk.fulfilled, (state, action) => {
             state.error = null;
-            state.status = "succeeded";
+            state.isLoading = false;
             state.post = action.payload.post;
             state.comments = action.payload.comments;
          })
          .addCase(fetchPostThunk.rejected, (state) => {
             state.error = action.error.message;
-            state.status = "failed";
+            state.isLoading = false;
          })
     }
 });
 
 export const selectPosts = (state) => state.post.post;
 export const selectComments = (state) => state.post.comments;
-export const selectStatus = (state) => state.post.status;
-export const selectError = (state) => state.post.error;
 
-export const { showPost } = postSlice.actions;
+export const { showPost, getcomments } = postSlice.actions;
 
 export default postSlice.reducer;

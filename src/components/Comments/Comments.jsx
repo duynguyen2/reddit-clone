@@ -7,8 +7,11 @@ export const Comments = () => {
     const comments = useSelector(selectComments);
 
     return (
-        <div>
+        <ul>
             /* display multiple comments */
-        </div>
+            {comments.map(comment => (
+                <li>put comment here</li>
+            ))}
+        </ul>
     );
 }
