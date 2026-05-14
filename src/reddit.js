@@ -1,11 +1,13 @@
 const API_ROOT = 'https://www.reddit.com';
 
-export const fetchSearchResults = (searchTerm) => {
-    const baseURL = `${API_ROOT}/search/?q=%${encodeURIComponent(searchTerm)}`;
+export const fetchSearchResults = async(searchTerm) => {
+    const res = fetch(`${API_ROOT}/search/?q=%${encodeURIComponent(searchTerm)}`);
+    const json = baseURL.json(res);
+    return json;
 }
 
-export const fetchPost = () => {
-
+export const fetchPost = async() => {
+    
 }
 
 export const fetchSubreddit = async() => {

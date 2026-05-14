@@ -1,7 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import fetchSubreddit from '../../reddit';
 
-export const fetchSubredditsThunk = ('subreddit/fetch', async(state) => {
+export const fetchSubredditsThunk = ('subreddit/fetch', async() => {
     // to be implemented
+    const json = fetchSubreddit();
+    return json.data.children.map(subreddit => subreddit.data);
 });
 
 const subredditsSlice = createSlice({
