@@ -10,7 +10,7 @@ export const fetchSubredditsThunk = ('subreddit/fetch', async() => {
 const subredditsSlice = createSlice({
     name: "subreddit",
     initialState: {
-        subreddits: [],
+        subreddits: [], // decide on keeping an array or using this to display individual subreddits instead of 1 whole list
         isLoading: false,
         error: null
     },

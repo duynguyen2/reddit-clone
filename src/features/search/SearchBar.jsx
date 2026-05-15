@@ -30,7 +30,6 @@ export const Search = ({}) => {
         dispatch(searchTerm);
     }
 
-
     return(
         <form>
             <input
@@ -42,8 +41,9 @@ export const Search = ({}) => {
 
             <div>
                 <h3>Matching Posts</h3>
+                {filteredPosts.map(post => post)}
                 <h3>Matching Subreddits</h3>
-                {}
+                {filteredSubreddits.map(subreddit => subreddit.subreddits)} // debating on changing how subreddit should be found, either as array or string
             </div>
         </form>
     );

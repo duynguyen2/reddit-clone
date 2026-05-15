@@ -45,6 +45,6 @@ const postSlice = createSlice({
 export const selectPosts = (state) => state.post.post;
 export const selectComments = (state) => state.post.comments;
 
-export const { showPost, getcomments } = postSlice.actions;
+export const { showPost, getComments } = postSlice.actions;
 
 export default postSlice.reducer;
