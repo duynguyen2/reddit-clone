@@ -2,27 +2,31 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import fetchSearchResults from '../../reddit';
 
 // debating to keep this here or move it over
+/*
 export const fetchSearchThunk = createAsyncThunk('search/fetchSearchResults', async(searchTerm) => {
     const results = await fetchSearchResults(searchTerm); // function will be created to fetch search results based on search terms
     return results.data.children.map(element => element.data);
 });
+*/
 
 const searchSlice = createSlice({
     name: "search",
     initialState: {
         searchTerm: "",
+        /*
         isLoading: false,
         error: null,
+        */
     },
-    reducers: { // decide if we should store and use locally saved searches
+    reducers: {
         setSearchTerm: (state, action) => {
-            state.searchTerm = action.payload.searchTerm;
+            state.searchTerm = action.payload;
         },
-        getSearchResults: (state, action) => {
-            state.results = action.payload.results;
-            return state.results;
+        clearSearchTerm: (state) => {
+            state.searchTerm = '';
         }
     },
+    /*
     extraReducers: (builder) => {
         builder
          .addCase(fetchSearchThunk.pending, (state) => {
@@ -37,8 +41,9 @@ const searchSlice = createSlice({
             state.error = action.error.message;
          })
     }
+    */
 });
 
-export const selectSearchTerm = (state) => state.searchTerm;
-export const { setSearchTerm } = searchSlice.actions;
+export const selectSearchTerm = (state) => state.search.searchTerm;
+export const { setSearchTerm, clearSearchTerm } = searchSlice.actions;
 export default searchSlice.reducer;

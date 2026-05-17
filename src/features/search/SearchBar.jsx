@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'; 
-import { selectSearchTerm } from './searchSlice';
+import { selectSearchTerm, clearSearchTerm } from './searchSlice';
 import { selectPosts } from '../post/postSlice';
 import { selectSubreddits } from '../subreddits/subredditsSlice'; 
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,11 +23,11 @@ export const Search = ({}) => {
     );
 
     const onSearchTermChange = (e) => {
-        setSearchTerm(e.target.value);
+        dispatch(setSearchTerm(e.target.value));
     }
 
     const handleSearch = () => {
-        dispatch(searchTerm);
+        
     }
 
     return(

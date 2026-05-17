@@ -6,7 +6,7 @@ export const fetchSearchResults = async(searchTerm) => {
     return json;
 }
 
-export const fetchPost = async() => {
+export const fetchPosts = async() => {
     
 }
 
