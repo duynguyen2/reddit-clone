@@ -11,27 +11,36 @@ const selectedPostSlice = createSlice({
     initialState: {
         post: {},
         comments: [],
-        isLoading: false,
+        status: 'idle',
         error: null,
     },
-    reducers: {},
+    reducers: {
+        clearSelectedPosts: (state) => {
+            state.post = {};
+            state.comments = [];
+            state.status = 'idle';
+            state.error = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
          .addCase(fetchSelectedPostThunk.pending, (state) => {
-            state.isLoading = true;
+            state.status = 'loading';
             state.error = null;
             state.post = {};
             state.comments = [];
          })
          .addCase(fetchSelectedPostThunk.fulfilled, (state, action) => {
-            state.isLoading = false;
+            state.status = 'succeeded';
             state.error = null;
             state.post = action.payload.post;
             state.comments = action.payload.comments;
          })
          .addCase(fetchSelectedPostThunk.rejected, (state, action) => {
-            state.isLoading = false;
+            state.status = 'failed';
             state.error = action.error.message;
+            state.post = {};
+            state.comments = [];
          })
     }
 });

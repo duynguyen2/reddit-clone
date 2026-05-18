@@ -12,7 +12,7 @@ const postsSlice = createSlice({
     initialState: {
         posts: [],
         selectedSubreddit: 'r/popular',
-        isLoading: false,
+        status: 'idle',
         error: null,
     },
     reducers: {
@@ -26,17 +26,17 @@ const postsSlice = createSlice({
     extraReducers: (builder) => {
         builder
          .addCase(fetchPostsThunk.pending, (state) => {
-            state.isLoading = true;
+            state.status = 'loading';
             state.error = null;
          })
          .addCase(fetchPostsThunk.fulfilled, (state, action) => {
-            state.isLoading = false;
+            state.status = 'succeeded';
             state.error = null;
             state.posts = action.payload.posts;
             state.selectedSubreddit = action.payload.selectedSubreddit;
          })
          .addCase(fetchPostsThunk.rejected, (state, action) => {
-            state.isLoading = false;
+            state.status = 'failed';
             state.error = action.error.message;
          })
     }
@@ -52,6 +52,8 @@ export const selectVisiblePosts = (state) => {
         post.title.toLowerCase().includes(searchTerm)
     );
 };
-export const selectPosts = (state) => state.posts;
-
+export const selectPosts = (state) => state.posts.posts;
+export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;
+export const selectPostsStatus = (state) => state.posts.status;
+export const selectPostsError = (state) => state.posts.error;
 export default postsSlice.reducer;

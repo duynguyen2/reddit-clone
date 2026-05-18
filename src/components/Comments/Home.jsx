@@ -2,7 +2,7 @@
 import React from 'react';
 import Subreddits from '../features/subreddits/Subreddits';
 
-export const Home = () => {
+export default Home = () => {
 
     return (
         <>
