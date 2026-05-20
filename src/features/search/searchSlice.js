@@ -8,7 +8,7 @@ export const fetchSearchThunk = createAsyncThunk('search/fetchSearchResults', as
     return results.data.children.map(element => element.data);
 });
 */
-
+// storing only the term for UI
 const searchSlice = createSlice({
     name: "search",
     initialState: {

@@ -1,7 +1,7 @@
 // maybe scrap feed since we have so many separate components, or scrap those and implement them into feed
 import { createSlice } from '@reduxjs/toolkit';
 
-const feedSlice = createSlice({
+const feedSlice = createSlice({ // to be worked on
     name: 'feed',
     initialState: {
         feed: [],
