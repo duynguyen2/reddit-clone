@@ -5,8 +5,8 @@ import { selectCurrentPost, selectComments } from '../selectedPost/selectedPostS
 import { Comments } from '../../components/Comments/Comments';
 
 // display more detailed view of one post, showing the post details and comments
-export default PostDetailed = () => {
-    const postID = useParams();
+export default PostDetailed = ({  }) => {
+    const postID = useParams(); // use params to read the route param
     const dispatch = useDispatch();
     const selectedPost = useSelector(selectCurrentPost);
     const comments = useSelector(selectComments);

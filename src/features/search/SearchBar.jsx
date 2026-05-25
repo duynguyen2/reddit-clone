@@ -1,43 +1,29 @@
-import { useState, useEffect } from 'react'; 
-import { selectSearchTerm, clearSearchTerm } from './searchSlice';
-import { selectPosts } from '../post/postsSlice';
-import { selectSubreddits } from '../subreddits/subredditsSlice'; 
+import { selectSearchTerm, setSearchTerm } from './searchSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const Search = ({}) => {
-    
-    const [searchTerm, setSearchTerm] = useState(''); // debating between using state or simply using the selector
-    const [results, setResults] = useState([]);
+// searchbar component to be put in the header component, meant to take the search and pass the info onward
+export const Search = () => {
     
     const dispatch = useDispatch();
-    const searchTermSelector = useSelector(selectSearchTerm); // debating between using state or simply using the selector
-    const postsSelector = useSelector(selectPosts);
-
-    const filteredPosts = postsSelector.filter(post => 
-        post.post.toLowerCase().includes(input.toLowerCase())
-    );
+    const searchTerm = useSelector(selectSearchTerm); // keep consistency with using redux
 
     const onSearchTermChange = (e) => {
         dispatch(setSearchTerm(e.target.value));
     }
 
-    const handleSearch = () => {
-        
+    const handleSearch = (e) => {
+        e.preventDefault();
     }
 
-    return(
-        <form>
+    return ( // should only return the searchbar component and contain the search terms, it should not do actual work for displaying the search results
+        <form onSubmit={handleSearch}>
             <input
                 type="text"
+                value={searchTerm}
                 onChange={onSearchTermChange}
                 placeholder="Enter Search..."
             />
             <button type="submit" onSubmit={handleSearch}>Search</button>
-
-            <div>
-                <h3>Matching Posts</h3>
-                {filteredPosts.map(post => post)}
-            </div>
         </form>
     );
 };

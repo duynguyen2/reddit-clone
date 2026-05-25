@@ -10,15 +10,17 @@ export const Subreddits = ({ }) => {
     const subreddits = useSelector(selectSubreddits); // pull array of subreddits to display
     const { currentSubreddit } = useParams();
 
+    /*
     useEffect(() => {
         dispatch(setSelectedSubreddit(currentSubreddit));
-        dispatch(fetchhPostsThunk(currentSubreddit))
+        dispatch(fetchPostsThunk(currentSubreddit))
     }, [currentSubreddit, dispatch]);
 
-    /* should be able to change subreddits, once a different one is selected then it changes the feed to display the latest posts from that subreddit */
+    // should be able to change subreddits, once a different one is selected then it changes the feed to display the latest posts from that subreddit 
     const handleChangeSubreddit = (subreddit) => {
         dispatch(setSelectedSubreddit(subreddit));
     }
+    */
 
     return (
         <div> // temporary div, maybe create a card component

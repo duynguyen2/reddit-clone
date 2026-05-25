@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { selectComments } from '../../features/selectedPosts/selectedPostSlice'; 
 import Comments from './Comments';
 
 export const Comment = ({ comment }) => {

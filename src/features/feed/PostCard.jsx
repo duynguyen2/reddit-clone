@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const PostCard = () => {
-
+export const PostCard = ({ post }) => {
 
     return (
         <>
@@ -9,7 +8,8 @@ export const PostCard = () => {
             <p>{post.content}</p>
 
             <div>
-                {comments}
+                // image for comments
+                <h3>{post.numComments}</h3>
             </div>
         </>
     );
