@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import fetchSearchResults from '../../reddit';
+import { fetchSearchResults } from '../../reddit';
 
 // debating to keep this here or move it over
 /*

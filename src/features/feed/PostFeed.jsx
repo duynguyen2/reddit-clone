@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Route, Link } from 'react-router-dom';
-import Posts from '../post/Posts';
-import PostDetailed from '../selectedPosts/PostDetailed';
+import { PostDetailed } from '../selectedPosts/PostDetailed';
 import { selectSearchTerm, setSearchTerm } from '../../features/search/searchSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectVisiblePosts } from '../posts/postsSlice';
+import { selectVisiblePosts } from '../post/postsSlice';
 import { fetchPostsThunk } from '../post/postsSlice';
 
 // maybe implement as prop to control state

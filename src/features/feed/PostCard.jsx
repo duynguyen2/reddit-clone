@@ -1,16 +1,20 @@
 import React from 'react';
+import './PostCard.css';
 
 export const PostCard = ({ post }) => {
 
     return (
-        <>
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
+        <div className="post-card">
+            <h2 className="post-card-title">{post.title}</h2>
+            <p className="post-card-content">{post.content}</p>
+            {post.img && (
+                <img src={post.img} alt={post.title} className="post-card-img" />
+            )}
 
             <div>
-                // image for comments
+                <img src={require("../../assets/reddit-smol-comment-icon.png")} alt="Number Of Comments" />
                 <h3>{post.numComments}</h3>
             </div>
-        </>
+        </div>
     );
 }

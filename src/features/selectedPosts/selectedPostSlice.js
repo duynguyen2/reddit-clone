@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import fetchPost from '../../reddit';
+import { fetchPosts } from '../../reddit';
 
 export const fetchSelectedPostThunk = createAsyncThunk('selectedPost/fetchSelectedPost', async(postPath) => {
-    const { post, comments } = await fetchPost(postPath); // function will created to fetch post
+    const { post, comments } = await fetchPosts(postPath); // function will created to fetch post
     return { post, comments };
 });
 

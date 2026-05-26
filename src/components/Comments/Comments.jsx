@@ -1,7 +1,5 @@
 import React from 'react';
-import selectComments from '../../features/post/postSlice';
-import { useSelector } from 'react-redux';
-import Comment from './Comment';
+import { Comment } from './Comment';
 
 export const Comments = ({ comments }) => {
 
@@ -13,7 +11,7 @@ export const Comments = ({ comments }) => {
         <ul>
             /* display multiple comments */
             {comments.map(comment => (
-                <li><Comment comment={comment} /></li>
+                <li key={comment.id}><Comment passedComment={comment} /></li>
             ))}
         </ul>
     );

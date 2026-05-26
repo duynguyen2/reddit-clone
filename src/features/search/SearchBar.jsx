@@ -2,7 +2,7 @@ import { selectSearchTerm, setSearchTerm } from './searchSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 // searchbar component to be put in the header component, meant to take the search and pass the info onward
-export const Search = () => {
+export const SearchBar = () => {
     
     const dispatch = useDispatch();
     const searchTerm = useSelector(selectSearchTerm); // keep consistency with using redux
@@ -16,7 +16,7 @@ export const Search = () => {
     }
 
     return ( // should only return the searchbar component and contain the search terms, it should not do actual work for displaying the search results
-        <form onSubmit={handleSearch}>
+        <form className="search" onSubmit={handleSearch}>
             <input
                 type="text"
                 value={searchTerm}

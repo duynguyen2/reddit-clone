@@ -1,10 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { selectComments } from '../../features/selectedPosts/selectedPostSlice'; 
-import Comments from './Comments';
+import { Comments } from './Comments';
 
-export const Comment = ({ comment }) => {
-    const dispatch = useDispatch();
+export const Comment = ({ passedComment }) => {
+    const {author, comment, replies} = passedComment;
 
     return (
         <div>
@@ -13,8 +11,15 @@ export const Comment = ({ comment }) => {
                 comments can have replies so recursively call Comments component to display them
             */
             <div>
-                <Comments />
+                <Avatar name={author} />
+                <h3>{author}</h3>
+                <p>{commentText}</p>
             </div>
+            {replies.length > 0 && (
+                <div className="comments-list">
+                    <Comments comments={replies} />
+                </div>
+            )}
         </div>
     );
 }

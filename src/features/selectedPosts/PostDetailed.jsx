@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentPost, selectComments } from '../selectedPost/selectedPostSlice';
+import { selectCurrentPost, selectComments } from './selectedPostSlice';
 import { Comments } from '../../components/Comments/Comments';
 
 // display more detailed view of one post, showing the post details and comments
-export default PostDetailed = ({  }) => {
+export const PostDetailed = ({  }) => {
     const postID = useParams(); // use params to read the route param
     const dispatch = useDispatch();
     const selectedPost = useSelector(selectCurrentPost);

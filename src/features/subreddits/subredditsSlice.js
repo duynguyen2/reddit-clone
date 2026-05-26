@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import fetchSubreddits from '../../reddit';
+import { fetchSubreddits } from '../../reddit';
 
 export const fetchSubredditsThunk = createAsyncThunk('subreddits/fetchSubreddits', async() => {
     const json = await fetchSubreddits();
