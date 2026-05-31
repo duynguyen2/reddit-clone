@@ -1,4 +1,4 @@
-const API_ROOT = 'https://www.reddit.com';
+const API_ROOT = '/reddit';
 
 export const fetchSearchResults = async(searchTerm) => {
     try {
@@ -14,11 +14,24 @@ export const fetchSearchResults = async(searchTerm) => {
 
 export const fetchPosts = async(subreddit) => {
     try {
-        const url = subreddit ? `${API_ROOT}/r/${subreddit}.json` : `${API_ROOT}/.json`
-        const response = await fetch(url);
-        const json = await response.json();
+        fetch('/reddit/r/reactjs.json')
+            .then(r => {
+                console.log('status', r.status);
+                return r.text();
+            })
+            .then(console.log)
+            .catch(console.error);
+        const target = subreddit ? `${subreddit}` : 'popular';
+        const response = await fetch(`${API_ROOT}/r/${target}.json`);
 
-        return json;
+        console.log(response.status);
+        if (!response.ok) {
+            const text = await response.text();
+            console.log(text);
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        return await response.json();
     } catch (error) {
         console.error('Error fetching posts: ', error);
         throw error;

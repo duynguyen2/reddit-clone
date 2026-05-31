@@ -23,7 +23,7 @@ export const Subreddits = ({ }) => {
     */
 
     return (
-        <div> // temporary div, maybe create a card component
+        <div> temporary div, maybe create a card component
             <h2>Subreddits</h2>
             <ul>
                 {subreddits.map(subreddit => (

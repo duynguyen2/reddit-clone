@@ -4,7 +4,12 @@ import { fetchPosts } from '../../reddit';
 // fetch posts thunk for fetching by passing in the name of the subreddit
 export const fetchPostsThunk = createAsyncThunk("posts/fetchPosts", async(subreddit) => {
     const response = await fetchPosts(subreddit);
-    return response; // will need to restructure for the extraReducers to function
+    return {
+        posts: response.data.children.map(
+            child => child.data
+        ),
+        selectedSubreddit: subreddit || "popular",
+    }; // will need to restructure for the extraReducers to function
 });
 
 const postsSlice = createSlice({
@@ -14,6 +19,7 @@ const postsSlice = createSlice({
         selectedSubreddit: 'r/popular',
         status: 'idle',
         error: null,
+        selectedPostId: null,
     },
     reducers: {
         setPosts: (state, action) => {
@@ -21,7 +27,13 @@ const postsSlice = createSlice({
         },
         setSubreddit: (state, action) => {
             state.selectedSubreddit = action.payload;
-        }
+        },
+        setSelectedPostId: (state, action) => {
+            state.selectedPostId = action.payload;
+        },
+        clearSelectedPostId: (state) => {
+            state.selectedPostId = null;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -56,4 +68,8 @@ export const selectPosts = (state) => state.posts.posts;
 export const selectSelectedSubreddit = (state) => state.posts.selectedSubreddit;
 export const selectPostsStatus = (state) => state.posts.status;
 export const selectPostsError = (state) => state.posts.error;
+export const selectSelectedPostId = (state) => state.posts.selectedPostId;
+
+export const { setSelectedPostId, clearSelectedPostId } = postsSlice.actions;
+
 export default postsSlice.reducer;

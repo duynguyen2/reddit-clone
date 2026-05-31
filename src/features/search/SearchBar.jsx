@@ -23,7 +23,7 @@ export const SearchBar = () => {
                 onChange={onSearchTermChange}
                 placeholder="Enter Search..."
             />
-            <button type="submit" onSubmit={handleSearch}>Search</button>
+            <button type="submit">Search</button>
         </form>
     );
 };

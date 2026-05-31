@@ -12,14 +12,10 @@ function App() {
 
   return (
     <>
+      <Header />
       <main>
-        <Header />
-      </main>
-      
-      <body>
         <PostFeed />
-      </body>
-
+      </main>
       <aside>
         <Subreddits />
       </aside>
