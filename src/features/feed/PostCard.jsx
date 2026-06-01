@@ -1,5 +1,6 @@
 import React from 'react';
 import './PostCard.css';
+import commentIcon from '../../assets/reddit-smol-comment-icon.png';
 
 export const PostCard = ({ post }) => {
 
@@ -22,8 +23,13 @@ export const PostCard = ({ post }) => {
         }
     */
 
+    const isImage = (url) => {
+        if(!url) return false;
+        return url.match(/\.(jpeg|jpg|gif|png)$/) != null || url.includes("images.unsplash.com");
+    }
+
     return (
-        <div className="post-card">
+        <div className="post-card" style={{ cursor: 'pointer' }}>
             <h2 className="post-card-title">{post.title}</h2>
             <p className="post-card-content">{post.content}</p>
             {post.img && (
@@ -31,7 +37,7 @@ export const PostCard = ({ post }) => {
             )}
 
             <div>
-                <img src={require("../../assets/reddit-smol-comment-icon.png")} alt="Number Of Comments" />
+                <img className="comment-icon" src={commentIcon} alt="Number Of Comments" />
                 <h3>{post.numComments}</h3>
             </div>
         </div>

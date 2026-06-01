@@ -4,11 +4,16 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSubreddits } from './subredditsSlice';
 import { selectSelectedSubreddit, fetchPostsThunk } from '../post/postsSlice';
+import { fetchSubredditsThunk } from './subredditsSlice';
 
 export const Subreddits = ({ }) => {
     const dispatch = useDispatch();
     const subreddits = useSelector(selectSubreddits); // pull array of subreddits to display
     const { currentSubreddit } = useParams();
+
+    useEffect(() => {
+        dispatch(fetchSubredditsThunk('popular'));
+    }, [dispatch]);
 
     /*
     useEffect(() => {
@@ -23,13 +28,13 @@ export const Subreddits = ({ }) => {
     */
 
     return (
-        <div> temporary div, maybe create a card component
+        <div className="sidebar"> temporary div, maybe create a card component
             <h2>Subreddits</h2>
             <ul>
                 {subreddits.map(subreddit => (
-                    <li>
-                        <Link to={`/r/${subreddit.title}`}>
-                        {subreddit}
+                    <li key={subreddit.id || subreddit.display_name}>
+                        <Link to={`/r/${subreddit.display_name}`}>
+                        {subreddit.display_name}
                         </Link>
                     </li>
                 ))}

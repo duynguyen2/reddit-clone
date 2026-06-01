@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchPosts } from '../../reddit';
+import { mockRedditPosts } from '../../mockData';
 
 // fetch posts thunk for fetching by passing in the name of the subreddit
 export const fetchPostsThunk = createAsyncThunk("posts/fetchPosts", async(subreddit) => {
+    /*
     const response = await fetchPosts(subreddit);
     return {
         posts: response.data.children.map(
@@ -10,6 +12,13 @@ export const fetchPostsThunk = createAsyncThunk("posts/fetchPosts", async(subred
         ),
         selectedSubreddit: subreddit || "popular",
     }; // will need to restructure for the extraReducers to function
+    */
+
+    // using mock data until workaround for reddit cors block
+    return {
+        posts: mockRedditPosts.map(child => child.data),
+        subreddit: subreddit || "popular"
+    };
 });
 
 const postsSlice = createSlice({

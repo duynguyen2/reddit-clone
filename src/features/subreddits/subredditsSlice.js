@@ -1,9 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchSubreddits } from '../../reddit';
+import { mockSubreddits } from '../../mockData';
 
 export const fetchSubredditsThunk = createAsyncThunk('subreddits/fetchSubreddits', async() => {
+    /*
     const json = await fetchSubreddits();
     return json.data.children.map(subreddit => subreddit.data);
+    */
+
+    return mockSubreddits.map(subreddit => subreddit.data);
 });
 
 const subredditsSlice = createSlice({

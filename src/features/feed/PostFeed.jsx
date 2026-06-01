@@ -5,6 +5,7 @@ import { selectSearchTerm, setSearchTerm } from '../../features/search/searchSli
 import { useDispatch, useSelector } from 'react-redux';
 import { selectVisiblePosts, setSelectedPostId } from '../post/postsSlice';
 import { fetchPostsThunk } from '../post/postsSlice';
+import { PostCard } from './PostCard';
 
 // maybe implement as prop to control state
 // handle displaying the list of posts and transition to post card for more detailed view
@@ -19,10 +20,6 @@ export const PostFeed = () => {
         dispatch(fetchPostsThunk('popular'));
     }, [dispatch]);
 
-    const filteredPosts = posts.filter(post =>
-        post.post.toLowerCase().includes(searchTerm)
-    );
-
     const handleSelectPost = (post) => {
         const postId = post.id || post.data?.id;
 
@@ -30,11 +27,15 @@ export const PostFeed = () => {
         navigate(`/post/${postId}`);
     }
 
+    if(!posts || posts.length === 0) {
+        return <div className="loading-state">Loading feed...</div>
+    }
+
     return (
         <div>
             <h2>Feed</h2>
             { /* pull post and display */ }
-            {filteredPosts.map(post =>
+            {posts.map(post =>
                 <PostCard
                     key={post.id || post.data?.id}
                     post={post}

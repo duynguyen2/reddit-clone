@@ -11,7 +11,7 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/reddit/, ''),
         headers: {
-          'User-Agent': 'Mozilla/5.0'
+            "User-Agent": "web:myredditapp:v1.0 (by /u/yourusername)"
         }
       }
     },
