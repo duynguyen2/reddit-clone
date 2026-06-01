@@ -23,17 +23,12 @@ export const PostCard = ({ post }) => {
         }
     */
 
-    const isImage = (url) => {
-        if(!url) return false;
-        return url.match(/\.(jpeg|jpg|gif|png)$/) != null || url.includes("images.unsplash.com");
-    }
-
     return (
         <div className="post-card" style={{ cursor: 'pointer' }}>
             <h2 className="post-card-title">{post.title}</h2>
             <p className="post-card-content">{post.content}</p>
-            {post.img && (
-                <img src={post.img} alt={post.title} className="post-card-img" />
+            {post.thumbnail && (
+                <img src={post.thumbnail} alt={post.title} className="post-card-img" />
             )}
 
             <div>

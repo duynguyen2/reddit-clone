@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    margin: auto;
+    height: auto;
+    width: 100%;
+    align-content: center;
+}
+
+.home-button {
+    display: flex;
+    align-content: center;
+    justify-content: start;
+}
+
+.reddit-smol-icon {
+    margin: auto;
+    height: auto;
+    width: 75px;
+}

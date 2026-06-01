@@ -1,5 +1,6 @@
 import { selectSearchTerm, setSearchTerm } from './searchSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import './SearchBar.css';
 
 // searchbar component to be put in the header component, meant to take the search and pass the info onward
 export const SearchBar = () => {
