@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSubreddits } from './subredditsSlice';
-import { selectSelectedSubreddit, fetchPostsThunk } from '../post/postsSlice';
+import { fetchPostsThunk } from '../post/postsSlice';
 import { fetchSubredditsThunk } from './subredditsSlice';
 
 export const Subreddits = ({ }) => {

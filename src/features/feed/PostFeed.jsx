@@ -24,7 +24,7 @@ export const PostFeed = () => {
         const postId = post.id || post.data?.id;
 
         dispatch(setSelectedPostId(postId));
-        navigate(`/post/${postId}`);
+        navigate(`/posts/${postId}`);
     }
 
     if(!posts || posts.length === 0) {

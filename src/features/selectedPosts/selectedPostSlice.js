@@ -1,8 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchPosts } from '../../reddit';
+import { mockRedditPosts, mockPostComments } from '../../mockData';
 
+/*
 export const fetchSelectedPostThunk = createAsyncThunk('selectedPost/fetchSelectedPost', async(postPath) => {
     const { post, comments } = await fetchPosts(postPath); // function will created to fetch post
+    return { post, comments };
+});
+*/
+
+export const fetchSelectedPostThunk = createAsyncThunk('selectedPost/fetchSelectedPost', async(postId) => {
+    const post = mockRedditPosts.find(mockPost => mockPost.data.id === postId);
+    const comments = mockPostComments[postId];
     return { post, comments };
 });
 

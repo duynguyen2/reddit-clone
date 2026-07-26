@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={ <PostFeed /> }/>
             <Route path="/r/:currentSubreddit" element={ <PostFeed /> } /> {/* dynamic feed */}
-            <Route path="/r/:postId" element={ <PostDetailed /> } />
+            <Route path="/posts/:postId" element={ <PostDetailed /> } />
           </Routes>
         </main>
       </div>

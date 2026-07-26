@@ -1,6 +1,7 @@
 import React from 'react';
 import './PostCard.css';
 import commentIcon from '../../assets/reddit-smol-comment-icon.png';
+import { Route, Link } from 'react-router-dom';
 
 export const PostCard = ({ post }) => {
 
@@ -24,17 +25,19 @@ export const PostCard = ({ post }) => {
     */
 
     return (
-        <div className="post-card" style={{ cursor: 'pointer' }}>
-            <h2 className="post-card-title">{post.title}</h2>
-            <p className="post-card-content">{post.content}</p>
-            {post.thumbnail && (
-                <img src={post.thumbnail} alt={post.title} className="post-card-img" />
-            )}
+        <Link to={`/posts/${post.id}`}>
+            <div className="post-card" style={{ cursor: 'pointer' }}>
+                <h2 className="post-card-title">{post.title}</h2>
+                <p className="post-card-content">{post.content}</p>
+                {post.thumbnail && (
+                    <img src={post.thumbnail} alt={post.title} className="post-card-img" />
+                )}
 
-            <div>
-                <img className="comment-icon" src={commentIcon} alt="Number Of Comments" />
-                <h3>{post.numComments}</h3>
+                <div>
+                    <img className="comment-icon" src={commentIcon} alt="Number Of Comments" />
+                    <h3>{post.numComments}</h3>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 }
